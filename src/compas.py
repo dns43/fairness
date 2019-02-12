@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 # Create your connection.
-cnx = sqlite3.connect('/Users/dns43/Downloads/compas.db')
+cnx = sqlite3.connect('../data/compas.db')
 
 df = pd.read_sql_query("SELECT * FROM compas", cnx)
 df = df.drop_duplicates()
 df.head()
-df2 = pd.read_csv("https://github.com/propublica/compas-analysis/raw/master/compas-scores-two-years.csv", header=0).set_index('id')
+df2 = pd.read_csv("../data/compas-scores.csv", header=0).set_index('id')
 
 corr = df2.corr()
 sns.heatmap(corr, 
